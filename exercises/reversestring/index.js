@@ -6,13 +6,22 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 
+// solution 1
+// function reverse(str) {
+//   let newStr = "";
+//   let length = str.length;
+//   while (length > 0) {
+//     newStr = newStr + str[length - 1];
+//     length--;
+//   }
+//   return newStr;
+// }
+
+// solution 2
 function reverse(str) {
-  let newStr = "";
-  let length = str.length;
-  while (length > 0) {
-    newStr = newStr + str[length - 1];
-    length--;
-  }
+  let chars = str.split("");
+  chars.reverse();
+  let newStr = chars.join("");
   return newStr;
 }
 
