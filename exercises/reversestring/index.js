@@ -8,6 +8,13 @@
 
 // solution 1
 // function reverse(str) {
+//   let reversed = "";
+// for (let char of str) {
+//   reversed = char + reversed;
+// }
+// return reversed;
+
+// while loop
 //   let newStr = "";
 //   let length = str.length;
 //   while (length > 0) {
@@ -18,11 +25,17 @@
 // }
 
 // solution 2
-function reverse(str) {
-  let chars = str.split("");
-  chars.reverse();
-  let newStr = chars.join("");
-  return newStr;
-}
+// function reverse(str) {
+//   return str
+//     .split("")
+//     .reverse()
+//     .join("");
+// }
 
+// solution 3
+function reverse(str) {
+  return str.split("").reduce((rev, char) => {
+    return char + rev;
+  }, "");
+}
 module.exports = reverse;
