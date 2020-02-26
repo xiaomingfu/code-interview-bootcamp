@@ -10,12 +10,12 @@
 
 function reverseInt(n) {
   const sign = Math.sign(n);
-  let temp = n.toString().split("");
-  if (sign === -1) {
-    temp = temp.slice(1);
-  }
-  temp = temp.reverse();
-  return parseInt(temp.join(""), 10) * sign;
+  const reversed = n
+    .toString()
+    .split("")
+    .reverse()
+    .join("");
+  return parseInt(reversed) * sign;
 }
 
 module.exports = reverseInt;
