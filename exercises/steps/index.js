@@ -18,9 +18,21 @@
 //       '####'
 
 function steps(n) {
-  for (let i = 1; i <= n; i++) {
-    console.log("#".repeat(i) + " ".repeat(n - i));
+  for (let row = 0; row < n; row++) {
+    let res = "";
+    for (let cell = 0; cell < n; cell++) {
+      if (cell <= row) {
+        res += "#";
+      } else {
+        res += " ";
+      }
+    }
+    console.log(res);
   }
+  // solution 1
+  //   for (let i = 1; i <= n; i++) {
+  //     console.log("#".repeat(i) + " ".repeat(n - i));
+  //   }
 }
 
 module.exports = steps;
