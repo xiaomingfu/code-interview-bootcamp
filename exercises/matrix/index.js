@@ -20,38 +20,38 @@ function matrix(n) {
   for (let i = 0; i < n; i++) {
     results.push([]);
   }
-  let num = 1;
-  let row = 0;
-  let col = 0;
-  while (num < n * n) {
-    if (row < n - 1) {
-      if (col < n - 1) {
-        results[row][col] = num;
-        num += 1;
-        col += 1;
-      }
-      matrix[row][col] = num;
-      num += 1;
-      row += 1;
-    }
 
-    while (col > 0) {
-      matrix[row][col] = num;
-      num += 1;
-      col -= 1;
+  let count = 1;
+  let startCol = 0;
+  let endCol = n - 1;
+  let startRow = 0;
+  let endRow = n - 1;
+  while (startRow <= endRow && startCol <= endCol) {
+    //   first row
+    for (let i = startCol; i <= endCol; i++) {
+      results[startRow][i] = count;
+      count++;
     }
-    while (row > 0) {
-      matrix[row][col] = num;
-      num += 1;
-      row -= 1;
+    // right end col
+    startRow++;
+    for (let i = startRow; i <= endRow; i++) {
+      results[i][endCol] = count;
+      count++;
     }
-    if (row === 0 && col === 0) {
-      row += 1;
-      col += 1;
-      matrix[row][col] = num;
+    // last row
+    endCol--;
+    for (let i = endCol; i >= startCol; i--) {
+      results[endRow][i] = count;
+      count++;
     }
-    num += 1;
+    endRow--;
+    for (let i = endRow; i >= startRow; i--) {
+      results[i][startCol] = count;
+      count++;
+    }
+    startCol++;
   }
+  return results;
 }
 
 module.exports = matrix;
