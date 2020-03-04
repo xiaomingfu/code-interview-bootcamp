@@ -8,8 +8,21 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {
-  //   recursive (O)n^2 time complexity
+function memoize(fn) {
+  const cache = {};
+  return function(...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+
+    return result;
+  };
+}
+
+function slowFib(n) {
+  //   recursive (O)2^n time complexity
   // if (n === 0) {
   //   return 0;
   // }
@@ -19,6 +32,7 @@ function fib(n) {
   if (n <= 1) {
     return n;
   }
+
   return fib(n - 1) + fib(n - 2);
   //   while (n >= 2) {
   //     return fib(n - 1) + fib(n - 2);
@@ -26,6 +40,7 @@ function fib(n) {
   //   }
 }
 
+const fib = memoize(slowFib);
 module.exports = fib;
 // iterative (o)n
 //   const result = [0, 1];
