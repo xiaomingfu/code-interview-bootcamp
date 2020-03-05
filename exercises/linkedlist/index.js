@@ -28,12 +28,7 @@ class LinkedList {
   }
 
   getFirst() {
-    let node;
-    while (this.head) {
-      node = this.head;
-      this.head = this.head.next;
-    }
-    return node;
+    return this.head;
   }
 }
 
