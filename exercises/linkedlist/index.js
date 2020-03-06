@@ -78,7 +78,11 @@ class LinkedList {
 
   insertLast(data) {
     const last = this.getLast();
-    last.next = new Node(data);
+    if (last) {
+      last.next = new Node(data);
+    } else {
+      this.head = new Node(data);
+    }
   }
 }
 
