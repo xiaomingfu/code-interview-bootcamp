@@ -72,10 +72,13 @@ class LinkedList {
       previousNode = nextNode;
       nextNode = nextNode.next;
     }
-    console.log(previousNode);
-    console.log(nextNode);
-    console.log(previousNode.next);
+
     previousNode.next = null;
+  }
+
+  insertLast(data) {
+    const last = this.getLast();
+    last.next = new Node(data);
   }
 }
 
