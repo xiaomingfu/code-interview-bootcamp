@@ -19,12 +19,15 @@ class LinkedList {
   }
 
   size() {
-    let count = 0;
-    while (this.head) {
-      count++;
-      this.head = this.head.next;
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      counter++;
+      node = node.next;
     }
-    return count;
+
+    return counter;
   }
 
   getFirst() {
@@ -46,6 +49,12 @@ class LinkedList {
 
   clear() {
     this.head = null;
+  }
+
+  removeFirst() {
+    if (this.head) {
+      this.head = this.head.next;
+    }
   }
 }
 
