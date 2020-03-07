@@ -99,19 +99,19 @@ class LinkedList {
   }
 
   removeAt(index) {
-    let node = this.getAt(index);
-
-    if (node) {
-      let previous = this.getAt(index - 1);
-      if (node.next) {
-        if (index === 0) {
-          return (this.head = node.next);
-        }
-
-        return (previous.next = node.next);
-      }
-      previous.next = null;
+    if (!this.head) {
+      return;
     }
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let previous = this.getAt(index - 1);
+    if (!previous || !previous.next) {
+      return;
+    }
+    previous.next = previous.next.next;
   }
 }
 
