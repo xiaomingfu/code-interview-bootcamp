@@ -115,24 +115,36 @@ class LinkedList {
   }
 
   insertAt(data, index) {
-    const node = new Node(data);
-    if (!this.head) {
-      return (this.head = node);
-    }
-    let dummyHead = this.head;
-    if (index === 0) {
-      this.head = node;
-      return (this.head.next = dummyHead);
-    }
-    const previous = this.getAt(index - 1);
+    //     const node = new Node(data);
+    //     if (!this.head) {
+    //       return (this.head = node);
+    //     }
+    //     let dummyHead = this.head;
+    //     if (index === 0) {
+    //       this.head = node;
+    //       return (this.head.next = dummyHead);
+    //     }
+    //     const previous = this.getAt(index - 1);
 
-    if (!previous || !previous.next) {
-      while (dummyHead.next) {
-        dummyHead = dummyHead.next;
-      }
-      return (dummyHead.next = node);
+    //     if (!previous || !previous.next) {
+    //       while (dummyHead.next) {
+    //         dummyHead = dummyHead.next;
+    //       }
+    //       return (dummyHead.next = node);
+    //     }
+    //     node.next = previous.next;
+    //     previous.next = node;
+
+    if (!this.head) {
+      return (this.head = new Node(data));
     }
-    node.next = previous.next;
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+    const previous = this.getAt(index - 1) || this.getLast();
+
+    const node = new Node(data, previous.next);
     previous.next = node;
   }
 }
