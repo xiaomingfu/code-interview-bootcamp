@@ -15,7 +15,8 @@ class LinkedList {
   }
 
   insertFirst(data) {
-    this.head = new Node(data, this.head);
+    // this.head = new Node(data, this.head);
+    this.insertAt(data, 0);
   }
 
   size() {
@@ -31,20 +32,22 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    // return this.head;
+    return this.getAt(0);
   }
 
   getLast() {
-    if (!this.head) {
-      return null;
-    }
-    let node = this.head;
-    while (node) {
-      if (!node.next) {
-        return node;
-      }
-      node = node.next;
-    }
+    // if (!this.head) {
+    //   return null;
+    // }
+    // let node = this.head;
+    // while (node) {
+    //   if (!node.next) {
+    //     return node;
+    //   }
+    //   node = node.next;
+    // }
+    return this.getAt(this.size() - 1);
   }
 
   clear() {
@@ -52,37 +55,37 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (this.head) {
-      this.head = this.head.next;
-    }
+    // if (this.head) {
+    //   this.head = this.head.next;
+    // }
+    this.removeAt(0);
   }
 
   removeLast() {
-    if (!this.head) {
-      return;
-    }
-
-    if (!this.head.next) {
-      return (this.head = null);
-    }
-
-    let previousNode = this.head;
-    let nextNode = this.head.next;
-    while (nextNode.next) {
-      previousNode = nextNode;
-      nextNode = nextNode.next;
-    }
-
-    previousNode.next = null;
+    // if (!this.head) {
+    //   return;
+    // }
+    // if (!this.head.next) {
+    //   return (this.head = null);
+    // }
+    // let previousNode = this.head;
+    // let nextNode = this.head.next;
+    // while (nextNode.next) {
+    //   previousNode = nextNode;
+    //   nextNode = nextNode.next;
+    // }
+    // previousNode.next = null;
+    this.removeAt(this.size() - 1);
   }
 
   insertLast(data) {
-    const last = this.getLast();
-    if (last) {
-      last.next = new Node(data);
-    } else {
-      this.head = new Node(data);
-    }
+    // const last = this.getLast();
+    // if (last) {
+    //   last.next = new Node(data);
+    // } else {
+    //   this.head = new Node(data);
+    // }
+    this.insertAt(data, this.size());
   }
 
   getAt(index) {
