@@ -88,12 +88,12 @@ class LinkedList {
   getAt(index) {
     let node = this.head;
     let counter = 0;
-    if (node) {
-      while (counter < index) {
-        node = node.next;
-        counter++;
+    while (node) {
+      if (counter === index) {
+        return node;
       }
-      return node;
+      counter++;
+      node = node.next;
     }
     return null;
   }
@@ -127,11 +127,10 @@ class LinkedList {
     const previous = this.getAt(index - 1);
 
     if (!previous || !previous.next) {
-      while (dummyHead) {
+      while (dummyHead.next) {
         dummyHead = dummyHead.next;
       }
-      dummyHead = node;
-      return;
+      return (dummyHead.next = node);
     }
     node.next = previous.next;
     previous.next = node;
