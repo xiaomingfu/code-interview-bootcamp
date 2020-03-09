@@ -13,9 +13,6 @@
 //   midpoint(l); // returns { data: 'b' }
 
 function midpoint(list) {
-  if (!list.head) {
-    return null;
-  }
   let slow = list.head;
   let fast = list.head;
 
