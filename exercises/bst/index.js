@@ -31,16 +31,15 @@ class Node {
   }
 
   contains(data) {
-    if ((data > this.data && !this.right) || (data < this.data && !this.left)) {
-      return null;
-    }
-    if (data > this.data) {
+    if (data > this.data && this.right) {
       return this.right.contains(data);
-    }
-    if (data < this.data) {
+    } else if (data < this.data && this.left) {
       return this.left.contains(data);
     }
-    return new Node(data);
+    if (this.data === data) {
+      return this;
+    }
+    return null;
   }
 }
 
