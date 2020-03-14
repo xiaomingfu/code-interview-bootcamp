@@ -33,21 +33,22 @@ function mergeSort(arr) {}
 function merge(left, right) {
   let merge = [];
 
-  while (left.length > 0 && right.length > 0) {
+  // make sure both left and right arenot empty
+  while (left.length && right.length) {
     if (left[0] > right[0]) {
       merge.push(right.shift());
     } else {
       merge.push(left.shift());
     }
   }
-
-  if (left.length > 0) {
-    merge.push(...left);
-  }
-  if (right.length > 0) {
-    merge.push(...right);
-  }
-  return merge;
+  return [...merge, ...left, ...right];
+  //   if (left.length > 0) {
+  //     merge.push(...left);
+  //   }
+  //   if (right.length > 0) {
+  //     merge.push(...right);
+  //   }
+  //   return merge;
 }
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
