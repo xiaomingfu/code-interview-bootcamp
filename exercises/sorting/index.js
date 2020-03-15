@@ -28,27 +28,39 @@ function selectionSort(arr) {
   return arr;
 }
 
-function mergeSort(arr) {}
+function mergeSort(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  } else {
+    let middle = Math.ceil(arr.length / 2);
+
+    let left = [];
+    let right = [];
+    for (let i = 0; i < middle; i++) {
+      left.push(arr[i]);
+    }
+    for (let i = middle; i < arr.length; i++) {
+      right.push(arr[i]);
+    }
+
+    return merge(mergeSort(left), mergeSort(right));
+  }
+}
 
 function merge(left, right) {
-  let merge = [];
+  let result = [];
 
   // make sure both left and right arenot empty
   while (left.length && right.length) {
     if (left[0] > right[0]) {
-      merge.push(right.shift());
+      result.push(right.shift());
     } else {
-      merge.push(left.shift());
+      result.push(left.shift());
     }
   }
-  return [...merge, ...left, ...right];
-  //   if (left.length > 0) {
-  //     merge.push(...left);
-  //   }
-  //   if (right.length > 0) {
-  //     merge.push(...right);
-  //   }
-  //   return merge;
+  return [...result, ...left, ...right];
 }
+
+mergeSort([43, 2, 34, 5, 63, 245]);
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
