@@ -29,19 +29,22 @@ function selectionSort(arr) {
 }
 
 function mergeSort(arr) {
-  if (arr.length <= 1) {
+  if (arr.length === 1) {
     return arr;
   } else {
-    let middle = Math.ceil(arr.length / 2);
+    // let middle = Math.ceil(arr.length / 2);
 
-    let left = [];
-    let right = [];
-    for (let i = 0; i < middle; i++) {
-      left.push(arr[i]);
-    }
-    for (let i = middle; i < arr.length; i++) {
-      right.push(arr[i]);
-    }
+    // let left = [];
+    // let right = [];
+    // for (let i = 0; i < middle; i++) {
+    //   left.push(arr[i]);
+    // }
+    // for (let i = middle; i < arr.length; i++) {
+    //   right.push(arr[i]);
+    // }
+    const center = Math.floor(arr.length / 2);
+    let left = arr.slice(0, center);
+    let right = arr.slice(center);
 
     return merge(mergeSort(left), mergeSort(right));
   }
